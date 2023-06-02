@@ -1,24 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 body {
   font-family: 'Poppins', sans-serif;
+  padding: 0 20px;
 }
 .active {
   color: #9d45ef;
 }
 
-.App,
-.banner {
-  margin-left: auto;
-  margin-right: auto;
-}
-.App {
-  max-width: calc(100% - 32px);
-  width: 1280px;
-}
-
-.banner {
-  max-width: 800px;
-}
 .overlay {
   position: absolute;
   inset: 0;
