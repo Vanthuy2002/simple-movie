@@ -1,11 +1,12 @@
 import './App.css';
-import HomePage from './Pages/Home';
+import 'swiper/css';
 import Message from './components/Toast/Message';
+import Routing from './Routes/Routing';
 
 function App() {
   return (
     <div className='App'>
-      <HomePage />
+      <Routing></Routing>
       <Message />
     </div>
   );

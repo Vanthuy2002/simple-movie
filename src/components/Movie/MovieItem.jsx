@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { pathImg } from '../../Api/configApi';
+import { useNavigate } from 'react-router-dom';
 
 const MovieItem = ({ movie }) => {
+  // change to Details Pages
+  const navigate = useNavigate();
+  const handleURL = (id) => {
+    navigate(`movie/${id}`);
+  };
   return (
     <>
       <div className='flex flex-col h-full p-3 rounded-lg movie-card bg-slate-800'>
@@ -19,7 +25,10 @@ const MovieItem = ({ movie }) => {
             <span className=''>{movie.vote_average}</span>
           </div>
 
-          <button className='w-full px-5 py-2.5 bg-red-300 rounded-lg mt-auto'>
+          <button
+            onClick={() => handleURL(movie.id)}
+            className='w-full text-center px-5 py-2.5 bg-red-300 rounded-lg mt-auto'
+          >
             Watch Now
           </button>
         </div>

@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import useSWR from 'swr';
+import PropTypes from 'prop-types';
 import { SwiperSlide, Swiper } from 'swiper/react';
 import MovieItem from './MovieItem';
-import 'swiper/css';
+import useSWR from 'swr';
 import { fetcher, apiMovie, apiKey } from '../../Api/configApi';
 
-const type = {
-  now: 'now_playing',
-  rated: 'top_rated',
-  popular: 'popular',
-};
-
-const MovieList = () => {
+const MovieList = ({ type }) => {
   const [movie, setMovie] = useState([]);
-  const { data } = useSWR(`${apiMovie}/${type.now}?api_key=${apiKey}`, fetcher);
+  const { data } = useSWR(`${apiMovie}/${type}?api_key=${apiKey}`, fetcher);
 
   useEffect(() => {
     if (data && data.results) {
@@ -33,6 +27,10 @@ const MovieList = () => {
       </Swiper>
     </div>
   );
+};
+
+MovieList.propTypes = {
+  type: PropTypes.string,
 };
 
 export default MovieList;
