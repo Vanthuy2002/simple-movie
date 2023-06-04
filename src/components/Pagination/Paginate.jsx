@@ -1,40 +1,42 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ReactPaginate from 'react-paginate';
 
-const Paginate = ({ page, onPage, onBack }) => {
+const PaginatedItems = ({ itemsPerPage, data, changePage }) => {
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  useEffect(() => {
+    if (!data || !data.total_pages) return;
+    setPageCount(Math.ceil(data.total_pages / itemsPerPage));
+  }, [data, itemOffset]);
+
+  const handlePageClick = (e) => {
+    const newOffset = (e.selected * itemsPerPage) % data.total_pages;
+    setItemOffset(newOffset);
+    changePage(e.selected + 1);
+  };
+
   return (
-    <nav className='mt-10 flex justify-end'>
-      <ul className='inline-flex -space-x-px'>
-        <li>
-          <span
-            className='cursor-pointer px-3 py-2 ml-0 leading-tight text-white bg-slate-500 border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700'
-            onClick={onBack}
-          >
-            Prev
-          </span>
-        </li>
-
-        <li>
-          <span className='px-3 py-2 leading-tight text-white bg-slate-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700'>
-            {page}
-          </span>
-        </li>
-        <li>
-          <span
-            className='cursor-pointer px-3 py-2 leading-tight text-white bg-slate-500 border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700'
-            onClick={onPage}
-          >
-            Next
-          </span>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <ReactPaginate
+        breakLabel='...'
+        nextLabel='Next'
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel='Prev'
+        renderOnZeroPageCount={null}
+      />
+    </>
   );
 };
-Paginate.propTypes = {
-  page: PropTypes.number,
-  onPage: PropTypes.func,
-  onBack: PropTypes.func,
+
+PaginatedItems.propTypes = {
+  data: PropTypes.object,
+  itemsPerPage: PropTypes.number,
+  changePage: PropTypes.func,
 };
 
-export default Paginate;
+export default PaginatedItems;

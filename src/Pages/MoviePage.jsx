@@ -9,10 +9,10 @@ import {
 } from '../Api/configApi';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import MovieItem from '../components/Movie/MovieItem';
+import PaginatedItems from '../components/Pagination/Paginate';
 import useDebounce from '../hooks/useDebounce';
 import Loading from '../components/Effect/Loading';
 import { toast } from 'react-toastify';
-import Paginate from '../components/Pagination/Paginate';
 
 const MoviePage = () => {
   const [filter, setFilter] = useState('');
@@ -28,12 +28,6 @@ const MoviePage = () => {
   const movies = data?.results || [];
   const deboundFilter = useDebounce(filter, 1000);
 
-  const handleNextPage = () => {
-    setPageMovie(pageMovie + 1);
-  };
-  const handlePrevPage = () => {
-    setPageMovie(pageMovie - 1);
-  };
   useEffect(() => {
     if (deboundFilter) {
       setApiEndPoint(
@@ -73,11 +67,11 @@ const MoviePage = () => {
           movies.map((item) => <MovieItem key={item.id} movie={item} />)}
       </div>
 
-      <Paginate
-        page={pageMovie}
-        onPage={handleNextPage}
-        onBack={handlePrevPage}
-      ></Paginate>
+      <PaginatedItems
+        itemsPerPage={movies.length}
+        data={data}
+        changePage={setPageMovie}
+      ></PaginatedItems>
     </div>
   );
 };
