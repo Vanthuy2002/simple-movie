@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const MovieItem = ({ movie }) => {
   // change to Details Pages
   const navigate = useNavigate();
+
   const handleURL = (id) => {
-    navigate(`movie/${id}`);
+    navigate(`/movie/${id}`);
   };
+
   return (
     <>
       <div className='flex flex-col h-full p-3 rounded-lg movie-card bg-slate-800'>

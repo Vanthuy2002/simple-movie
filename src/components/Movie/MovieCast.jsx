@@ -11,10 +11,9 @@ const MovieCast = ({ id, typeChange }) => {
 
   if (!data) return;
   const { cast } = data;
-  console.log(cast);
 
   return (
-    <div className='py-10'>
+    <div className='py-10 page-container'>
       <h2 className='mb-10 text-3xl text-center'>Casts</h2>
       <div className='grid grid-cols-4 gap-5'>
         {cast &&

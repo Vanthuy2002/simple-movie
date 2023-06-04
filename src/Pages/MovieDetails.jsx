@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetcher, apiMovie, apiKey, pathImg } from '../Api/configApi';
 import MovieCast from '../components/Movie/MovieCast';
+import TrailerMovie from '../components/Movie/TrailerMovie';
+import MovieSimilar from '../components/Movie/MovieSimilar';
 
 const MovieDetails = () => {
   const navigate = useNavigate();
@@ -52,6 +54,8 @@ const MovieDetails = () => {
       </p>
 
       <MovieCast id={movieId} typeChange='credits'></MovieCast>
+      <TrailerMovie id={movieId} typeChange='videos'></TrailerMovie>
+      <MovieSimilar id={movieId} typeChange='similar'></MovieSimilar>
 
       <div className='text-center'>
         <button
