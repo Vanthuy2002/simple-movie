@@ -12,3 +12,22 @@ body {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.page {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+.page-count a {
+  padding: 10px 10px;
+}
+.selected {
+  background-color: #ca9bf7;
+  border-radius: 3px;
+}
+.page .disabled {
+  color: #929292;
+  pointer-events: none;
+}

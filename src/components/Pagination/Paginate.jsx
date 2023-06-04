@@ -8,8 +8,8 @@ const PaginatedItems = ({ itemsPerPage, data, changePage }) => {
   const [itemOffset, setItemOffset] = useState(0);
 
   useEffect(() => {
-    if (!data || !data.total_pages) return;
-    setPageCount(Math.ceil(data.total_pages / itemsPerPage));
+    if (!data || !data.total_results) return;
+    setPageCount(Math.ceil(data.total_results / itemsPerPage));
   }, [data, itemOffset]);
 
   const handlePageClick = (e) => {
@@ -28,6 +28,8 @@ const PaginatedItems = ({ itemsPerPage, data, changePage }) => {
         pageCount={pageCount}
         previousLabel='Prev'
         renderOnZeroPageCount={null}
+        className='page'
+        pageClassName='page-count'
       />
     </>
   );
