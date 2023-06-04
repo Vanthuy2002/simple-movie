@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { pathImg } from '../../Api/configApi';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../Layout/Button';
 
 const MovieItem = ({ movie }) => {
   // change to Details Pages
@@ -27,12 +28,9 @@ const MovieItem = ({ movie }) => {
             <span className=''>{movie.vote_average}</span>
           </div>
 
-          <button
-            onClick={() => handleURL(movie.id)}
-            className='w-full text-center px-5 py-2.5 bg-red-300 rounded-lg mt-auto'
-          >
+          <Button classCSS='mt-auto' cliked={() => handleURL(movie.id)}>
             Watch Now
-          </button>
+          </Button>
         </div>
       </div>
     </>

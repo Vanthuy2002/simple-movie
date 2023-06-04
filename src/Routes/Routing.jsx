@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Main from '../Layout/Main';
 import HomePage from '../Pages/Home';
-import Banner from '../components/Movie/Banner';
+import Banner from '@components/Movie/Banner';
 import MoviePage from '../Pages/MoviePage';
 import MovieDetails from '../Pages/MovieDetails';
 

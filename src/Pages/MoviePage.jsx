@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import MovieItem from '@components/Movie/MovieItem';
+import PaginatedItems from '@components/Pagination/Paginate';
+import useDebounce from '../hooks/useDebounce';
+import Loading from '@components/Effect/Loading';
+import { toast } from 'react-toastify';
 import {
   type,
   fetcher,
@@ -7,12 +13,6 @@ import {
   apiKey,
   apiSearchMovie,
 } from '../Api/configApi';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import MovieItem from '../components/Movie/MovieItem';
-import PaginatedItems from '../components/Pagination/Paginate';
-import useDebounce from '../hooks/useDebounce';
-import Loading from '../components/Effect/Loading';
-import { toast } from 'react-toastify';
 
 const MoviePage = () => {
   const [filter, setFilter] = useState('');

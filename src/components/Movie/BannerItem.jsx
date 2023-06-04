@@ -1,8 +1,15 @@
 import React from 'react';
 import PropsType from 'prop-types';
 import { pathImg } from '../../Api/configApi';
+import { useNavigate } from 'react-router-dom';
+import Button from '../../Layout/Button';
 
 const BannerItem = ({ item }) => {
+  const navigate = useNavigate();
+  const handleURL = (id) => {
+    navigate(`/movie/${id}`);
+  };
+
   return (
     <div className='relative w-full h-full'>
       <div className='overlay'></div>
@@ -21,9 +28,12 @@ const BannerItem = ({ item }) => {
             Action
           </span>
         </div>
-        <button className='mt-3 py-2.5 px-5 text-white font-medium rounded-lg bg-pink-400'>
+        <Button
+          classCSS={`max-w-[100px] mt-5`}
+          cliked={() => handleURL(item.id)}
+        >
           Watch
-        </button>
+        </Button>
       </div>
     </div>
   );
