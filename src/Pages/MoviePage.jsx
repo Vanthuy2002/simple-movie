@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import MovieItem from '@components/Movie/MovieItem';
-import PaginatedItems from '@components/Pagination/Paginate';
+import MovieItem from '../components/Movie/MovieItem';
 import useDebounce from '../hooks/useDebounce';
-import Loading from '@components/Effect/Loading';
+import Loading from '../components/Effect/Loading';
 import { toast } from 'react-toastify';
 import {
   type,
@@ -13,6 +12,7 @@ import {
   apiKey,
   apiSearchMovie,
 } from '../Api/configApi';
+import PaginatedItems from '../components/Pagination/Paginate';
 
 const MoviePage = () => {
   const [filter, setFilter] = useState('');
@@ -43,7 +43,7 @@ const MoviePage = () => {
 
   return (
     <div className='py-10 text-white page-container'>
-      <div className='flex mb-10 rounded-sm overflow-hidden'>
+      <div className='flex mb-10 overflow-hidden rounded-sm'>
         <div className='flex-1'>
           <input
             value={filter}

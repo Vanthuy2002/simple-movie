@@ -1,32 +1,36 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Main from '../Layout/Main';
-import HomePage from '../Pages/Home';
-import Banner from '@components/Movie/Banner';
-import MoviePage from '../Pages/MoviePage';
-import MovieDetails from '../Pages/MovieDetails';
+import Banner from '../components/Movie/Banner';
+import LoadingSearch from '../components/Effect/Loading';
+
+const HomePage = lazy(() => import('../Pages/Home'));
+const MoviePage = lazy(() => import('../Pages/MoviePage'));
+const MovieDetails = lazy(() => import('../Pages/MovieDetails'));
 
 const Routing = () => {
   return (
-    <Routes>
-      <Route element={<Main></Main>}>
-        <Route
-          path='/'
-          element={
-            <>
-              <Banner></Banner>
-              <HomePage></HomePage>
-            </>
-          }
-        ></Route>
+    <Suspense fallback={<LoadingSearch isCenter={true}></LoadingSearch>}>
+      <Routes>
+        <Route element={<Main></Main>}>
+          <Route
+            path='/'
+            element={
+              <>
+                <Banner></Banner>
+                <HomePage></HomePage>
+              </>
+            }
+          ></Route>
 
-        <Route path='movie' element={<MoviePage></MoviePage>}></Route>
-        <Route
-          path='/movie/:movieId'
-          element={<MovieDetails></MovieDetails>}
-        ></Route>
-      </Route>
-    </Routes>
+          <Route path='movie' element={<MoviePage></MoviePage>}></Route>
+          <Route
+            path='/movie/:movieId'
+            element={<MovieDetails></MovieDetails>}
+          ></Route>
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 

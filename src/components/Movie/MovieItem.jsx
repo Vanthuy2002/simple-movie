@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { pathImg } from '../../Api/configApi';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../Layout/Button';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorHanler from '../Debug/ErrorHanler';
 
 const MovieItem = ({ movie }) => {
   // change to Details Pages
@@ -41,4 +43,6 @@ MovieItem.propTypes = {
   movie: PropTypes.object,
 };
 
-export default MovieItem;
+export default withErrorBoundary(MovieItem, {
+  FallbackComponent: ErrorHanler,
+});

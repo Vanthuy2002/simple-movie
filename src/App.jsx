@@ -1,8 +1,8 @@
 import './App.css';
 import 'swiper/css';
 import 'react-toastify/dist/ReactToastify.min.css';
-import Message from '@components/Toast/Message';
 import Routing from './Routes/Routing';
+import Message from './components/Toast/Message';
 
 function App() {
   return (

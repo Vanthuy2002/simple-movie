@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const LoadingSearch = () => {
+const LoadingSearch = ({ isCenter }) => {
   return (
-    <div role='status' className='flex justify-center'>
+    <div
+      role='status'
+      className={`flex justify-center ${
+        isCenter ? 'items-center min-h-screen' : ''
+      }`}
+    >
       <svg
         aria-hidden='true'
-        className='inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600'
+        className='inline w-12 h-12 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600'
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
@@ -22,6 +28,10 @@ const LoadingSearch = () => {
       <span className='sr-only'>Loading...</span>
     </div>
   );
+};
+
+LoadingSearch.propTypes = {
+  isCenter: PropTypes.bool,
 };
 
 export default LoadingSearch;

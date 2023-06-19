@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieList from '@components/Movie/MovieList';
+import MovieList from '../components/Movie/MovieList';
 import { type } from '../Api/configApi';
 
 const HomePage = () => {

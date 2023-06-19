@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetcher, apiMovie, apiKey, pathImg } from '../Api/configApi';
-import MovieCast from '@components/Movie/MovieCast';
-import TrailerMovie from '@components/Movie/TrailerMovie';
-import MovieSimilar from '@components/Movie/MovieSimilar';
+import MovieCast from '../components/Movie/MovieCast';
+import TrailerMovie from '../components/Movie/TrailerMovie';
+import MovieSimilar from '../components/Movie/MovieSimilar';
 
 const MovieDetails = () => {
   const navigate = useNavigate();

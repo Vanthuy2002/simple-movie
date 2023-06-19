@@ -16,7 +16,7 @@ const MovieSimilar = ({ id, typeChange }) => {
 
   return (
     <div className='py-10 page-container'>
-      <h2 className='text-2xl font-medium mb-10'>Similar Movies</h2>
+      <h2 className='mb-10 text-2xl font-medium'>Similar Movies</h2>
 
       <div className='movie-list'>
         <Swiper grabCursor={true} spaceBetween={20} slidesPerView={4}>
